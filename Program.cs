@@ -2,7 +2,7 @@
 
 class ToDoListClass
 {
-    static List<string> toDo = new List<string>(); // Lista para armazenar as tarefas
+    static List<string> toDo = new List<string> {"Return menu"}; // Lista para armazenar as tarefas
     static void Main()
     {
         Console.WriteLine(DateTime.Now); // Exibe a data e hora atual
@@ -86,12 +86,19 @@ class ToDoListClass
         // Mostra todas as tarefas com seus números correspondentes
         for (int i = 0; i < toDo.Count; i++)
         {
-            Console.WriteLine($"{i + 1}. {toDo[i]}");
+            Console.WriteLine($"{i}. {toDo[i]}");
         }
         Console.WriteLine("\nIf you wish to delete any task, please enter the corresponding number:");
 
+       
         // Solicita ao usuário para selecionar a tarefa a ser removida
-        int taskIndex = int.Parse(Console.ReadLine());
+            int taskIndex = int.Parse(Console.ReadLine());
+        if (taskIndex == 0)
+            {
+            Console.Clear();
+            Main();
+            }
+
         // Verifica se o índice está dentro dos limites da lista
         if (taskIndex >= 1 && taskIndex <= toDo.Count)
         {
@@ -108,6 +115,7 @@ class ToDoListClass
         else
         {
             Console.WriteLine("Invalid task number!");
+            Main();
         }
     }
     static void Exit()
